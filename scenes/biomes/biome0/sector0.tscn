@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://6y676mg0pftl"]
+
+[ext_resource type="Texture2D" uid="uid://c036aqvo3l2h3" path="res://assets/biomes/biome0/sector0/plan (1).png" id="1_dsu67"]
+[ext_resource type="Texture2D" uid="uid://tn7v11qi5ssj" path="res://assets/biomes/biome0/sector0/plan (2).png" id="2_nuiyd"]
+[ext_resource type="Script" path="res://IA_script/IA1.gd" id="3_r1wb1"]
+[ext_resource type="Texture2D" uid="uid://bgmojwenyu3mu" path="res://1614884588dinosaure-volant.jpg" id="4_j5x36"]
+[ext_resource type="Script" path="res://IA_script/Sprite2D.gd" id="5_oi4uu"]
+
+[sub_resource type="Curve2D" id="Curve2D_nbiok"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 611, 487, 0, 0, 0, 0, 674, 470, 0, 0, 0, 0, 753, 439, 0, 0, 0, 0, 829, 427, 0, 0, 0, 0, 937, 427, 0, 0, 0, 0, 869, 371, 0, 0, 0, 0, 750, 351, 0, 0, 0, 0, 642, 382, 0, 0, 0, 0, 572, 447, 0, 0, 0, 0, 444, 475, 0, 0, 0, 0, 306, 410, 0, 0, 0, 0, 164, 413)
+}
+point_count = 12
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2(0.3, 0.3)
+transform = Transform2D(0.3, 0, 0, 0.3, 0, 0)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("1_dsu67")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_nuiyd")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nbiok")
+
+[node name="PathFollow2DNode" type="PathFollow2D" parent="Path2D2"]
+position = Vector2(611, 487)
+rotation = -0.263564
+
+[node name="IA1" type="Node2D" parent="Path2D2/PathFollow2DNode"]
+position = Vector2(-58.7551, -62.4641)
+rotation = 0.261903
+scale = Vector2(1, 1)
+script = ExtResource("3_r1wb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D2/PathFollow2DNode/IA1"]
+position = Vector2(75.9296, 42.1262)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_j5x36")
+script = ExtResource("5_oi4uu")
